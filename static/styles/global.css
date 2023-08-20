@@ -1,0 +1,183 @@
+@import "./reset.css";
+
+@font-face {
+	font-family: 'Noto Sans Khmer';
+	src: url(/fonts/NotoSansKhmer-Regular.ttf);
+	font-weight: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Sans Khmer';
+	src: url(/fonts/NotoSansKhmer-SemiBold.ttf);
+	font-weight: 600 700;
+	font-display: swap;
+}
+html {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+	--content_max_width: min(100%, 52.5em);
+	--content_padding_horizontal: 2.5rem;
+
+	--clr_dark: #141414;
+	--clr_dark_shade_a: #212121;
+	--clr_light: #f3f3f3;
+	--clr_ivory: #fffff0;
+
+	--clr_primary: #003153;
+	--clr_primary_shade_a: #004f86;
+	--clr_secondary: #0077cc;
+	--clr_secondary_shade_a: #0095ff;
+	--clr_secondary_shade_b: #33aaff;
+
+	--clr_grey_shade_a: #444;
+	--clr_grey_shade_b: #666;
+	--clr_grey_shade_c: #999;
+	--clr_grey_shade_d: #ccc;
+	--clr_grey_shade_e: #ececec;
+	--clr_grey_shade_f: #f7f7f7;
+
+	/* type scaling (1.125 - major second) */
+	--type_scale_6: 1.802rem;
+	--type_scale_5: 1.602rem;
+	--type_scale_4: 1.424rem;
+	--type_scale_3: 1.266rem;
+	--type_scale_2: 1.125rem;
+	--type_scale_1: 1rem;
+}
+@media screen and (max-width: 48em) {
+	html {
+		--content_max_width: 100%;
+		--content_padding_horizontal: 1rem;
+
+		--type_scale_6: calc(1.802rem * 0.95);
+		--type_scale_5: calc(1.602rem * 0.95);
+		--type_scale_4: calc(1.424rem * 0.95);
+		--type_scale_3: calc(1.266rem * 0.95);
+		--type_scale_2: calc(1.125rem * 0.95);
+		--type_scale_1: calc(1rem * 0.95);
+	}
+}
+
+html:lang(km),
+*:lang(km) {
+	font-family: 'Noto Sans Khmer', sans-serif;
+	--type_scale_6: calc(1.802rem * 1.25);
+	--type_scale_5: calc(1.602rem * 1.25);
+	--type_scale_4: calc(1.424rem * 1.25);
+	--type_scale_3: calc(1.266rem * 1.25);
+	--type_scale_2: calc(1.125rem * 1.25);
+	--type_scale_1: calc(1rem * 1.25);
+}
+
+h1 {
+	font-weight: 600;
+	line-height: 1.15;
+}
+
+h2,
+h3,
+h4,
+h5 {
+	font-weight: 600;
+	line-height: 1.24;
+}
+
+div,
+span,
+p,
+a,
+ul,
+ol,
+small,
+q,
+blockquote {
+	font-family: var(--font_primary), sans-serif;
+}
+
+h1 {
+	font-size: var(--type_scale_6);
+}
+
+h2 {
+	font-size: var(--type_scale_5);
+}
+
+h3 {
+	font-size: var(--type_scale_4);
+}
+
+h4 {
+	font-size: var(--type_scale_3);
+}
+
+h5 {
+	font-size: var(--type_scale_2);
+}
+
+h6 {
+	font-size: var(--type_scale_1);
+}
+
+div,
+span,
+p,
+a,
+ul,
+ol,
+q,
+blockquote {
+	font-size: var(--type_scale_1);
+}
+
+p {
+	line-height: 1.6;
+}
+
+small {
+	font-size: 0.8rem;
+}
+
+a {
+	color: var(--clr_primary);
+}
+
+a:visited {
+	color: var(--clr_primary_shade_a);
+}
+
+a:hover,
+a:focus {
+	color: var(--clr_secondary);
+}
+
+[data-theme='dark'] a,
+[data-theme='dark'] a:visited {
+	color: var(--clr_secondary_shade_b);
+}
+[data-theme='dark'] a:hover,
+[data-theme='dark'] a:focus {
+	color: var(--clr_secondary_shade_a);
+}
+
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: var(--type_scale_1) 0;
+}
+div,
+span,
+p,
+a,
+ul,
+ol,
+q,
+blockquote,
+li {
+  margin: var(--type_scale_1) 0;
+  line-height: 1.5;
+}
