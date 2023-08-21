@@ -1,8 +1,6 @@
-<script lang="ts">
-	import type { Database } from '$lib';
-
-	export let language: 'en' | 'kh';
-	export let item: Database['public']['Tables']['section']['Row'];
+<script>
+	export let language;
+	export let item;
 </script>
 
 <section class="section-card">
@@ -50,7 +48,7 @@
 		width: 100%;
 		padding: 1.5rem;
 		border-radius: 0.75rem;
-		box-shadow: 0 0.325rem 0.75rem rgba(0, 0, 0, 0.175);
+		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
 		transition: outline 200ms ease-out;
 		background-color: #fff;
 		background-color: color-mix(in srgb, var(--clr_ivory) 50%, #fff 50%);
@@ -69,9 +67,13 @@
 		transition: 200ms ease-out color;
 	}
 	.section-card ul {
-		list-style-type: none;
+		padding-left: 1rem;
 	}
 	.section-card ul li {
+		list-style-type: circle;
 		color: var(--clr_grey_shade_c);
+	}
+	.section-card ul li:last-of-type {
+		margin-bottom: 0;
 	}
 </style>

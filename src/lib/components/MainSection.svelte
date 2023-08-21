@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { Database } from '$lib';
+	import StepsProgress from '$lib/components/StepsProgress.svelte';
 	import SectionCard from '$lib/components/SectionCard.svelte';
 
 	export let language: 'en' | 'kh';
@@ -32,6 +33,10 @@
 			</p>
 		{/if}
 	</span>
+</div>
+
+<div class="progress-container">
+	<StepsProgress {sections} />
 </div>
 
 <div class="cards-container">

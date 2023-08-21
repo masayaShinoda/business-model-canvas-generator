@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SectionsGrid from '$lib/components/SectionsGrid.svelte';
+	import MainSection from '$lib/components/MainSection.svelte';
 	import type { Database } from '$lib';
 
 	export let data;
@@ -15,5 +15,5 @@
 	/>
 </svelte:head>
 <main lang="km">
-	<SectionsGrid {sections} language="kh" />
+	<MainSection {sections} language="kh" />
 </main>
