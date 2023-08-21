@@ -18,4 +18,7 @@
         padding: 1rem var(--content_padding_horizontal);
         margin: 0 auto;
     }
+	header nav a {
+		font-size: var(--type_scale_2);
+	}
 </style>

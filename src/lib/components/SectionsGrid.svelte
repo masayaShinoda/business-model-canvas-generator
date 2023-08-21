@@ -1,17 +1,37 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import type { Database } from '$lib';
 
 	export let language: 'en' | 'kh';
 	export let sections: Array<Database['public']['Tables']['section']['Row']>;
 </script>
 
-<h1>
-	{#if language === 'en'}
-		Business Model Canvas Generator
-	{:else}
-		កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
-	{/if}
-</h1>
+<div class="hero-section">
+	<h1>
+		{#if language === 'en'}
+			Business Model Canvas Generator
+		{:else}
+			កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
+		{/if}
+	</h1>
+	<span>
+		{#if $page.url.pathname === '/kh'}
+			<p>
+				ផ្ទាំងគំរូអាជីវកម្មគឺជាគំរូគ្រប់គ្រងយុទ្ធសាស្ត្រដែលប្រើដើម្បីពិពណ៌នា បង្កើត
+				និងជំរុញគំរូអាជីវកម្ម។ <a href="https://en.wikipedia.org/wiki/Business_Model_Canvas"
+					>ស្វែងយល់បន្ថែម</a
+				> (អត្ថបទជាភាសាអង់គ្លេស)។
+			</p>
+		{:else}
+			<p>
+				The Business Model Canvas is a strategic management template used to describe, design,
+				challenge, invent, and pivot a business model. <a
+					href="https://en.wikipedia.org/wiki/Business_Model_Canvas">Learn more about the BMC.</a
+				>
+			</p>
+		{/if}
+	</span>
+</div>
 
 <div class="cards-container">
 	{#if sections}
@@ -50,9 +70,15 @@
 </div>
 
 <style>
-	h1 {
-		margin-bottom: var(--type_scale_6);
+	.hero-section {
+		margin-bottom: 2.5rem;
+	}
+	.hero-section h1 {
+		margin-bottom: var(--type_scale_5);
 		color: var(--clr_primary);
+	}
+	.hero-section p {
+		color: var(--clr_grey_shade_a);
 	}
 	.cards-container {
 		display: grid;
@@ -69,9 +95,7 @@
 			grid-template-columns: 1fr;
 		}
 	}
-	.section-card {
-		background-color: color-mix(in srgb, var(--clr_ivory) 50%, #fff 50%), #fff;
-	}
+
 	.section-card > button {
 		appearance: none;
 		text-transform: none;
@@ -92,12 +116,11 @@
 		border-radius: 0.75rem;
 		box-shadow: 0 0.325rem 0.75rem rgba(0, 0, 0, 0.175);
 		transition: outline 200ms ease-out;
+		background-color: #fff;
+		background-color: color-mix(in srgb, var(--clr_ivory) 50%, #fff 50%);
 	}
 	.section-card > button:active {
 		transform: translateY(0.25rem);
-	}
-	.section-card > button:focus {
-		outline: 1px solid var(--clr_secondary);
 	}
 	.section-card > button:hover h2,
 	.section-card > button:focus h2 {
