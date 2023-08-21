@@ -14,4 +14,6 @@
 		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​ (Business Model Canvas ឬ​សរសេរកាត់ថា BMC)."
 	/>
 </svelte:head>
-<SectionsGrid {sections} language="kh" />
+<main lang="km">
+	<SectionsGrid {sections} language="kh" />
+</main>

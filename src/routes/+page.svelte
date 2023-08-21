@@ -14,4 +14,6 @@
 		content="Khmer language tool to generate a Business Model Canvas (BMC)."
 	/>
 </svelte:head>
-<SectionsGrid {sections} language="en" />
+<main>
+	<SectionsGrid {sections} language="en" />
+</main>

@@ -1,4 +1,4 @@
-@import "./reset.css";
+@import './reset.css';
 
 @font-face {
 	font-family: 'Noto Sans Khmer';
@@ -17,7 +17,7 @@ html {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
 		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 
-	--content_max_width: min(100%, 52.5em);
+	--content_max_width: min(100%, 72.5em);
 	--content_padding_horizontal: 2.5rem;
 
 	--clr_dark: #141414;
@@ -60,15 +60,20 @@ html {
 	}
 }
 
-html:lang(km),
-*:lang(km) {
+main[lang="km"] {
+	--type_scale_6: calc(1.802rem * 1.125);
+	--type_scale_5: calc(1.602rem * 1.125);
+	--type_scale_4: calc(1.424rem * 1.125);
+	--type_scale_3: calc(1.266rem * 1.125);
+	--type_scale_2: calc(1.125rem * 1.125);
+	--type_scale_1: calc(1rem * 1.125);
+}
+main[lang="km"] * {
 	font-family: 'Noto Sans Khmer', sans-serif;
-	--type_scale_6: calc(1.802rem * 1.25);
-	--type_scale_5: calc(1.602rem * 1.25);
-	--type_scale_4: calc(1.424rem * 1.25);
-	--type_scale_3: calc(1.266rem * 1.25);
-	--type_scale_2: calc(1.125rem * 1.25);
-	--type_scale_1: calc(1rem * 1.25);
+}
+
+body {
+	background-color: var(--clr_ivory);
 }
 
 h1 {
@@ -161,13 +166,12 @@ a:focus {
 	color: var(--clr_secondary_shade_a);
 }
 
-
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: var(--type_scale_1) 0;
+	margin: var(--type_scale_1) 0;
 }
 div,
 span,
@@ -178,6 +182,33 @@ ol,
 q,
 blockquote,
 li {
-  margin: var(--type_scale_1) 0;
-  line-height: 1.5;
+	margin: calc(var(--type_scale_1) * 0.5) 0;
+	line-height: 1.5;
+}
+
+@supports (-moz-appearance: none) {
+	/* firefox specific khmer word wrap fix */
+	main[lang="km"] h1,
+	main[lang="km"] h2,
+	main[lang="km"] h3,
+	main[lang="km"] h4,
+	main[lang="km"] h5,
+	main[lang="km"] h6,
+	main[lang="km"] div,
+	main[lang="km"] span,
+	main[lang="km"] p,
+	main[lang="km"] a,
+	main[lang="km"] ul,
+	main[lang="km"] ol,
+	main[lang="km"] q,
+	main[lang="km"] blockquote,
+	main[lang="km"] li {
+		word-break: break-all;
+	}
+}
+
+main {
+	max-width: var(--content_max_width);
+	margin: 2.5rem auto;
+	padding: 0 var(--content_padding_horizontal);
 }
