@@ -1,21 +1,37 @@
 <script>
+	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
+
+	export let completed = false;
+	export let completed_questions = [];
+
 	export let language;
 	export let item;
+
+	function openDialog(id) {
+		document.getElementById(id).showModal()
+	}
 </script>
 
 <section class="section-card">
-	<button>
-		<h2>
-			{#if language === 'en'}
-				{item.title}
-			{:else}
-				{item.title_kh}
+	<button on:click={openDialog(item.id)}>
+		<span class="section-card__top">
+			<h2>
+				{#if language === 'en'}
+					{item.title}
+				{:else}
+					{item.title_kh}
+				{/if}
+			</h2>
+			{#if completed}
+				<span class="icon">
+					<CheckboxCircleFill />
+				</span>
 			{/if}
-		</h2>
+		</span>
 		<ul>
 			{#if language === 'en'}
 				{#each item.questions as question}
-					<li>{question}</li>
+					<li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li>
 				{/each}
 			{/if}
 			{#if language === 'kh'}
@@ -28,6 +44,16 @@
 		</ul>
 	</button>
 </section>
+<dialog id={item.id}>
+	<h2>
+		{#if language === 'en'}
+			{item.title}
+		{:else}
+			{item.title_kh}
+		{/if}
+	</h2>
+	
+</dialog>
 
 <style>
 	.section-card > button {
@@ -66,12 +92,25 @@
 		color: var(--clr_dark);
 		transition: 200ms ease-out color;
 	}
+	.section-card__top {
+		display: inline-flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.section-card__top .icon {
+		transform: scale(1.5);
+	}
 	.section-card ul {
 		padding-left: 1rem;
 	}
 	.section-card ul li {
 		list-style-type: circle;
 		color: var(--clr_grey_shade_c);
+	}
+	.section-card ul li.completed {
+		list-style-type: disc;
+		color: var(--clr_dark);
 	}
 	.section-card ul li:last-of-type {
 		margin-bottom: 0;

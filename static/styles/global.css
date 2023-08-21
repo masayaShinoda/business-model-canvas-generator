@@ -30,6 +30,9 @@ html {
 	--clr_secondary: #0077cc;
 	--clr_secondary_shade_a: #0095ff;
 	--clr_secondary_shade_b: #33aaff;
+	
+	--clr_positive: #43A047;
+	--clr_negative: #E53935;
 
 	--clr_grey_shade_a: #444;
 	--clr_grey_shade_b: #666;
