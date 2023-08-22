@@ -93,7 +93,8 @@
 		padding: 1.5rem;
 		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 6.5));
 		max-width: var(--content_max_width);
-		margin-top: 5rem;
+		margin-top: 5dvh;
+		max-height: 85dvh;
 	}
 	@media screen and (max-width: 40em) {
 		.section-dialog {
