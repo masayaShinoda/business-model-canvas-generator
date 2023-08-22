@@ -3,6 +3,7 @@
 	import type { Database } from '$lib';
 	import StepsProgress from '$lib/components/StepsProgress.svelte';
 	import SectionCard from '$lib/components/SectionCard.svelte';
+	import ResultButton from '$lib/components/ResultButton.svelte';
 
 	export let language: 'en' | 'kh';
 	export let sections: Array<Database['public']['Tables']['section']['Row']>;
@@ -12,7 +13,7 @@
 	<span class="hero-section__top">
 		<h1>
 			{#if language === 'kh'}
-				កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
+				កម្មវិធីបង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
 			{:else}
 				Business Model Canvas Generator
 			{/if}
@@ -52,6 +53,8 @@
 		<p>No content was retrieved from the server 🥲. Please try again later.</p>
 	{/if}
 </div>
+
+<ResultButton {language} />
 
 <style>
 	.hero-section {

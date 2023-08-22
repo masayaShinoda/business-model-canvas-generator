@@ -9,7 +9,11 @@
 	export let item;
 
 	function openDialog() {
-		document.getElementById(item.id).showModal();
+		if(language === 'kh') {
+			document.getElementById(`dialog-${item.id}-kh`).showModal();
+		} else {
+			document.getElementById(`dialog-${item.id}`).showModal();
+		}
 	}
 </script>
 
@@ -44,8 +48,8 @@
 			{/if}
 		</ul>
 	</button>
-	<output data-output-id={item.id} />
 </section>
+<!-- <output data-output-id={item.id} style="padding: 1rem 0 2rem 0; margin: 2rem 0; min-height: 5rem;" /> -->
 <SectionCardDialog {language} {item} />
 
 <style>

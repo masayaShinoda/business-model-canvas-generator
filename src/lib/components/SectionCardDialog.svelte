@@ -4,55 +4,85 @@
 
 	import CloseLine from '$lib/icons/close-line.svelte';
 
-	function closeDialog() {
-		document.getElementById(item.id).close();
+	function onClose() {
+		const dialog =
+			language === 'kh'
+				? document.getElementById(`dialog-${item.id}-kh`)
+				: document.getElementById(`dialog-${item.id}`);
+
+		const submit_btn = document.getElementById('btn-submit');
+
+		// const output_box = document.querySelector(`[data-output-id="${item.id}"]`);
+
+		// return value is `cancel` if user clicks X button, `default` if clicks submit button
+		if (dialog.returnValue === 'default') {
+			// bind values from the textarea elements to the submit buton
+			const textareas = Array.from(dialog.querySelector('form').querySelectorAll('textarea'));
+			const textarea_values = textareas.map((textarea) => {
+				return {
+					question: textarea.name,
+					answer: textarea.value
+				};
+			});
+
+			submit_btn.value = JSON.stringify(textarea_values);
+		}
 	}
 </script>
 
 <dialog
-	id={item.id}
+	id={language === 'kh' ? `dialog-${item.id}-kh` : `dialog-${item.id}`}
 	class="section-dialog"
 	aria-label={language === 'kh' ? item.title_kh : item.title}
+	on:close={onClose}
 >
-	<section class="section-dialog__top">
-		<h2>
-			{#if language === 'kh'}
-				{item.title_kh}
-			{:else}
-				{item.title}
-			{/if}
-		</h2>
-		<button on:click={closeDialog} aria-label="Close dialog" class="btn-close">
-			<CloseLine />
-		</button>
-	</section>
-	<section class="section-dialog__body">
-		<form>
+	<form id={language === 'kh' ? `form-${item.id}-kh` : `form-${item.id}`} method="dialog">
+		<section class="section-dialog__top">
+			<h2>
+				{#if language === 'kh'}
+					{item.title_kh}
+				{:else}
+					{item.title}
+				{/if}
+			</h2>
+			<button type="submit" value="cancel" aria-label="Close dialog" class="btn-close">
+				<CloseLine />
+			</button>
+		</section>
+		<section class="section-dialog__body">
 			<div class="inputs-container">
 				{#if language === 'en'}
 					{#each item.questions as question, index}
-						<label for={`question-${index + 1}`}>{question}</label>
-						<textarea id={`question-${index + 1}`} type="text" />
+						<label for={`item-${item.id}-question-${index + 1}`}>{question}</label>
+						<textarea
+							id={`item-${item.id}-question-${index + 1}`}
+							name={question}
+							form={`form-${item.id}`}
+						/>
 					{/each}
 				{/if}
 				{#if language === 'kh'}
 					{#if item.questions_kh && item.questions_kh.length > 0}
 						{#each item.questions_kh as question_kh, index}
-							<label for={`question-kh-${index + 1}`}>{question_kh}</label>
-							<textarea id={`question-kh-${index + 1}`} type="text" />
+							<label for={`item-${item.id}-question-${index + 1}-kh`}>{question_kh}</label>
+							<textarea
+								id={`item-${item.id}-question-${index + 1}-kh`}
+								name={question_kh}
+								form={`form-${item.id}-kh`}
+							/>
 						{/each}
 					{/if}
 				{/if}
 			</div>
-			<button id="confirmBtn" value="default" class="btn_main">
+			<button id="btn-submit" type="submit" value="default" class="btn_main">
 				{#if language === 'kh'}
 					រួចរាល់
 				{:else}
 					Done
 				{/if}
 			</button>
-		</form>
-	</section>
+		</section>
+	</form>
 </dialog>
 
 <style>
@@ -61,7 +91,7 @@
 		border-radius: 1rem;
 		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
 		padding: 1.5rem;
-		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 3.25));
+		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 6.5));
 		max-width: var(--content_max_width);
 		margin-top: 5rem;
 	}
@@ -121,8 +151,8 @@
 		resize: vertical;
 		margin: 0.5rem 0 1rem 0;
 		padding: 0.5rem;
-		min-width: min(32em, calc(100% - 1rem));
-		min-height: 5em;
+		min-width: min(37.5rem, calc(100% - 1rem));
+		min-height: 5rem;
 		outline: none;
 		font-size: 1rem;
 		border-radius: 0.5rem;
