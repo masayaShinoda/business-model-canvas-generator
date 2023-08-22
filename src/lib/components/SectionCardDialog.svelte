@@ -98,6 +98,7 @@
 	}
 	@media screen and (max-width: 40em) {
 		.section-dialog {
+			width: 85%;
 			padding: 1rem;
 		}
 	}
