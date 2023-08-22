@@ -1,4 +1,5 @@
 <script>
+	import SectionCardDialog from '$lib/components/SectionCardDialog.svelte';
 	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
 
 	export let completed = false;
@@ -7,13 +8,13 @@
 	export let language;
 	export let item;
 
-	function openDialog(id) {
-		document.getElementById(id).showModal()
+	function openDialog() {
+		document.getElementById(item.id).showModal();
 	}
 </script>
 
 <section class="section-card">
-	<button on:click={openDialog(item.id)}>
+	<button on:click={openDialog}>
 		<span class="section-card__top">
 			<h2>
 				{#if language === 'en'}
@@ -43,17 +44,9 @@
 			{/if}
 		</ul>
 	</button>
+	<output data-output-id={item.id} />
 </section>
-<dialog id={item.id}>
-	<h2>
-		{#if language === 'en'}
-			{item.title}
-		{:else}
-			{item.title_kh}
-		{/if}
-	</h2>
-	
-</dialog>
+<SectionCardDialog {language} {item} />
 
 <style>
 	.section-card > button {

@@ -9,13 +9,15 @@
 </script>
 
 <div class="hero-section">
-	<h1>
-		{#if language === 'en'}
-			Business Model Canvas Generator
-		{:else}
-			កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
-		{/if}
-	</h1>
+	<span class="hero-section__top">
+		<h1>
+			{#if language === 'kh'}
+				កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​
+			{:else}
+				Business Model Canvas Generator
+			{/if}
+		</h1>
+	</span>
 	<span>
 		{#if $page.url.pathname === '/kh'}
 			<p>
@@ -55,8 +57,14 @@
 	.hero-section {
 		margin-bottom: 2.5rem;
 	}
-	.hero-section h1 {
+	.hero-section__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
 		margin-bottom: var(--type_scale_5);
+	}
+	.hero-section h1 {
 		color: var(--clr_primary);
 	}
 	.hero-section p {
