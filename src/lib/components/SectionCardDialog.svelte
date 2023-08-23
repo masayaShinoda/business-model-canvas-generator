@@ -87,21 +87,34 @@
 
 <style>
 	.section-dialog {
+		background: none;
 		border: none;
 		border-radius: 1rem;
 		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
-		padding: 1.5rem;
 		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 6.5));
 		max-width: var(--content_max_width);
 		margin-top: 5dvh;
 		max-height: 85dvh;
+		padding: 0;
 	}
 	@media screen and (max-width: 40em) {
 		.section-dialog {
 			width: 85%;
+		}
+	}
+	.section-dialog form {
+		background-color: #fff;
+		padding: 1.5rem;
+	}
+	@media screen and (max-width: 40em) {
+		.section-dialog {
 			padding: 1rem;
 		}
 	}
+	[data-theme='dark'] .section-dialog form {
+		background-color: var(--clr_dark_shade_a);
+	}
+
 	.section-dialog::backdrop {
 		background-color: rgba(0, 0, 0, 0.25);
 	}
@@ -113,7 +126,11 @@
 	.section-dialog__top h2 {
 		margin-top: 0;
 	}
-	.btn-close {
+	[data-theme='dark'] .section-dialog__top h2 {
+		color: #fff;
+	}
+
+	.section-dialog .btn-close {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -128,13 +145,21 @@
 		transform: translateX(1rem) translateY(-1rem);
 	}
 	@media screen and (max-width: 40em) {
-		.btn-close {
+		.section-dialog .btn-close {
 			transform: translateX(0.5rem) translateY(-0.5rem);
 		}
 	}
-	.btn-close:hover,
-	.btn-close:focus {
+	.section-dialog .btn-close:hover {
 		background-color: rgba(0, 0, 0, 0.075);
+	}
+	[data-theme='dark'] .section-dialog .btn-close:hover {
+		background-color: rgba(255, 255, 255, 0.075);
+	}
+	.section-dialog .btn-close:focus-visible {
+		outline: 1px solid var(--clr_grey_shade_c);
+	}
+	[data-theme='dark'] .section-dialog .btn-close:focus-visible {
+		outline: 1px solid var(--clr_grey_shade_b);
 	}
 
 	.section-dialog__body {
@@ -149,6 +174,10 @@
 	.section-dialog__body .inputs-container label {
 		color: var(--clr_grey_shade_a);
 	}
+	[data-theme='dark'] .section-dialog__body .inputs-container label {
+		color: var(--clr_grey_shade_e);
+	}
+
 	.section-dialog__body .inputs-container textarea {
 		resize: vertical;
 		margin: 0.5rem 0 1rem 0;
@@ -159,5 +188,12 @@
 		font-size: 1rem;
 		border-radius: 0.5rem;
 		border: 1px solid var(--clr_grey_shade_d);
+		color: #000;
+		background-color: var(--clr_light);
+	}
+	[data-theme='dark'] .section-dialog__body .inputs-container textarea {
+		color: #fff;
+		background-color: var(--clr_grey_shade_a);
+		border-color: var(--clr_grey_shade_b);
 	}
 </style>

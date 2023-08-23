@@ -8,4 +8,7 @@
 	svg {
 		transform: scale(1.5);
 	}
+	[data-theme="dark"] svg path {
+		filter: invert(1);
+	}
 </style>

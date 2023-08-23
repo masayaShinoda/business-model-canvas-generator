@@ -76,7 +76,13 @@ main[lang="km"] * {
 }
 
 body {
+	color: var(--clr_dark);
 	background-color: var(--clr_ivory);
+}
+
+body[data-theme="dark"] {
+	color: var(--clr_light);
+	background-color: var(--clr_dark);
 }
 
 h1 {

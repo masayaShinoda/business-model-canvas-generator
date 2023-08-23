@@ -9,7 +9,7 @@
 	export let item;
 
 	function openDialog() {
-		if(language === 'kh') {
+		if (language === 'kh') {
 			document.getElementById(`dialog-${item.id}-kh`).showModal();
 		} else {
 			document.getElementById(`dialog-${item.id}`).showModal();
@@ -18,7 +18,7 @@
 </script>
 
 <section class="section-card">
-	<button on:click={openDialog}>
+	<button on:click={openDialog} class="card-btn">
 		<span class="section-card__top">
 			<h2>
 				{#if language === 'en'}
@@ -53,7 +53,7 @@
 <SectionCardDialog {language} {item} />
 
 <style>
-	.section-card > button {
+	.section-card .card-btn {
 		appearance: none;
 		text-transform: none;
 		font: inherit;
@@ -72,28 +72,42 @@
 		padding: 1.5rem;
 		border-radius: 0.75rem;
 		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
-		transition: outline 200ms ease-out;
 		background-color: #fff;
 		background-color: color-mix(in srgb, var(--clr_ivory) 50%, #fff 50%);
+		outline: 1px solid transparent;
+		transition: outline 200ms ease-out;
 	}
-	.section-card > button:active {
+	.section-card .card-btn:active {
 		transform: translateY(0.25rem);
 	}
-	.section-card > button:hover h2,
-	.section-card > button:focus h2 {
-		color: var(--clr_primary_shade_a);
+	[data-theme='dark'] .section-card .card-btn {
+		background-color: var(--clr_dark_shade_a);
 	}
+
+	.section-card .card-btn:focus-visible {
+		outline-color: var(--clr_grey_shade_c);
+	}
+	[data-theme='dark'] .section-card .card-btn:focus-visible {
+		outline-color: var(--clr_grey_shade_b);
+	}
+
 	.section-card h2 {
 		font-size: calc(var(--type_scale_5) * 0.75);
 		margin: 0;
 		color: var(--clr_dark);
 		transition: 200ms ease-out color;
 	}
+	[data-theme='dark'] .section-card h2 {
+		color: #fff;
+	}
+
 	.section-card__top {
 		display: inline-flex;
 		width: 100%;
 		justify-content: space-between;
 		align-items: center;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 	.section-card__top .icon {
 		transform: scale(1.5);
@@ -105,6 +119,10 @@
 		list-style-type: circle;
 		color: var(--clr_grey_shade_c);
 	}
+	[data-theme='dark'] .section-card ul li {
+		color: var(--clr_grey_shade_a);
+	}
+
 	.section-card ul li.completed {
 		list-style-type: disc;
 		color: var(--clr_dark);

@@ -70,8 +70,14 @@
 	.hero-section h1 {
 		color: var(--clr_primary);
 	}
+	[data-theme="dark"] .hero-section h1 {
+		color: var(--clr_secondary_shade_a);
+	}
 	.hero-section p {
 		color: var(--clr_grey_shade_a);
+	}
+	[data-theme="dark"] .hero-section p {
+		color: var(--clr_grey_shade_e);
 	}
 	.cards-container {
 		display: grid;

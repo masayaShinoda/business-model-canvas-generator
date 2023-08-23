@@ -19,14 +19,11 @@
 		padding: 0.875rem 1rem;
 		box-shadow: 0 .25rem .75rem rgba(0,0,0,.25);
 	}
-	@media screen and (max-width: 40em) {
+	@media screen and (max-width: 48em) {
 		#btn-result,
 		#btn-result-kh {
-			position: fixed;
+			position: sticky;
 			bottom: 5dvh;
-			max-width: 92.5dvw;
-			left: auto; 
-			right: auto;
 			margin: 0 auto;
 		}
 	}
