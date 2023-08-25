@@ -78,6 +78,7 @@ main[lang="km"] * {
 body {
 	color: var(--clr_dark);
 	background-color: var(--clr_ivory);
+	transition: color 100ms ease-out, background-color 100ms ease-out;
 }
 
 body[data-theme="dark"] {

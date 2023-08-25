@@ -36,7 +36,8 @@
 		<ul>
 			{#if language === 'en'}
 				{#each item.questions as question}
-					<li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li>
+					<!-- <li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li> -->
+					<li class='completed'>{question}</li>
 				{/each}
 			{/if}
 			{#if language === 'kh'}
@@ -116,16 +117,16 @@
 		padding-left: 1rem;
 	}
 	.section-card ul li {
-		list-style-type: circle;
-		color: var(--clr_grey_shade_c);
-	}
-	[data-theme='dark'] .section-card ul li {
+		list-style-image: url("$lib/icons/checkbox-blank-circle.svg");
 		color: var(--clr_grey_shade_a);
 	}
-
+	[data-theme='dark'] .section-card ul li {
+		color: var(--clr_grey_shade_d);
+		list-style-image: url("$lib/icons/checkbox-blank-circle-white.svg");
+	}
+	
 	.section-card ul li.completed {
-		list-style-type: disc;
-		color: var(--clr_dark);
+		list-style-image: url("$lib/icons/checkbox-circle-fill.svg");
 	}
 	.section-card ul li:last-of-type {
 		margin-bottom: 0;
