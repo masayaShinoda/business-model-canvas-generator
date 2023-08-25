@@ -1,11 +1,11 @@
 @import './reset.css';
 
-@font-face {
+/* @font-face {
 	font-family: 'Noto Sans Khmer';
 	src: url(/fonts/NotoSansKhmer-Regular.ttf);
 	font-weight: normal;
 	font-display: swap;
-}
+} */
 
 @font-face {
 	font-family: 'Noto Sans Khmer';
@@ -13,10 +13,15 @@
 	font-weight: 600 700;
 	font-display: swap;
 }
-html {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
-		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 
+@font-face {
+	font-family: 'Khmer';
+	src: url(/fonts/Khmer-Regular.ttf);
+	font-weight: normal;
+	font-display: swap;
+}
+
+html {
 	--content_max_width: min(100%, 72.5em);
 	--content_padding_horizontal: 2.5rem;
 
@@ -30,9 +35,9 @@ html {
 	--clr_secondary: #0077cc;
 	--clr_secondary_shade_a: #0095ff;
 	--clr_secondary_shade_b: #33aaff;
-	
-	--clr_positive: #43A047;
-	--clr_negative: #E53935;
+
+	--clr_positive: #43a047;
+	--clr_negative: #e53935;
 
 	--clr_grey_shade_a: #444;
 	--clr_grey_shade_b: #666;
@@ -48,6 +53,9 @@ html {
 	--type_scale_3: 1.266rem;
 	--type_scale_2: 1.125rem;
 	--type_scale_1: 1rem;
+
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 }
 @media screen and (max-width: 48em) {
 	html {
@@ -63,27 +71,19 @@ html {
 	}
 }
 
-main[lang="km"] {
-	--type_scale_6: calc(1.802rem * 1.125);
-	--type_scale_5: calc(1.602rem * 1.125);
-	--type_scale_4: calc(1.424rem * 1.125);
-	--type_scale_3: calc(1.266rem * 1.125);
-	--type_scale_2: calc(1.125rem * 1.125);
-	--type_scale_1: calc(1rem * 1.125);
-}
-main[lang="km"] * {
-	font-family: 'Noto Sans Khmer', sans-serif;
-}
-
 body {
 	color: var(--clr_dark);
 	background-color: var(--clr_ivory);
 	transition: color 100ms ease-out, background-color 100ms ease-out;
 }
 
-body[data-theme="dark"] {
+body[data-theme='dark'] {
 	color: var(--clr_light);
 	background-color: var(--clr_dark);
+}
+
+main[lang='km'] {
+	font-family: 'Khmer', sans-serif; /* client side navigation does not update html[lang], this is to make sure khmer font is correct */
 }
 
 h1 {
@@ -99,16 +99,12 @@ h5 {
 	line-height: 1.24;
 }
 
-div,
-span,
-p,
-a,
-ul,
-ol,
-small,
-q,
-blockquote {
-	font-family: var(--font_primary), sans-serif;
+[lang='km'] h1,
+[lang='km'] h2,
+[lang='km'] h3,
+[lang='km'] h4,
+[lang='km'] h5 {
+	font-family: 'Noto Sans Khmer', sans-serif;
 }
 
 h1 {
@@ -198,21 +194,21 @@ li {
 
 @supports (-moz-appearance: none) {
 	/* firefox specific khmer word wrap fix */
-	main[lang="km"] h1,
-	main[lang="km"] h2,
-	main[lang="km"] h3,
-	main[lang="km"] h4,
-	main[lang="km"] h5,
-	main[lang="km"] h6,
-	main[lang="km"] div,
-	main[lang="km"] span,
-	main[lang="km"] p,
-	main[lang="km"] a,
-	main[lang="km"] ul,
-	main[lang="km"] ol,
-	main[lang="km"] q,
-	main[lang="km"] blockquote,
-	main[lang="km"] li {
+	main[lang='km'] h1,
+	main[lang='km'] h2,
+	main[lang='km'] h3,
+	main[lang='km'] h4,
+	main[lang='km'] h5,
+	main[lang='km'] h6,
+	main[lang='km'] div,
+	main[lang='km'] span,
+	main[lang='km'] p,
+	main[lang='km'] a,
+	main[lang='km'] ul,
+	main[lang='km'] ol,
+	main[lang='km'] q,
+	main[lang='km'] blockquote,
+	main[lang='km'] li {
 		word-break: break-all;
 	}
 }
