@@ -1,4 +1,4 @@
-import type { Section } from "$lib";
+import type { Section } from '$lib';
 export const sections: Array<Section> = [
 	{
 		id: 1,
@@ -130,7 +130,9 @@ export const sections: Array<Section> = [
 		title: 'Customer Segments',
 		title_kh: 'ប្រភេទអតិថិជន',
 		questions: ['For whom are we creating value?', 'Who are our most important customers?'],
-		questions_kh: ['តើយើងបង្កើតតម្លៃសម្រាប់អ្នកណា?', 'តើនរណាជាអតិថិជនសំខាន់បំផុតរបស់យើង?']
+		questions_kh: ['តើយើងបង្កើតតម្លៃសម្រាប់អ្នកណា?', 'តើនរណាជាអតិថិជនសំខាន់បំផុតរបស់យើង?'],
+		answers: ['', ''],
+		answers_kh: ['', '']
 	},
 	{
 		id: 8,
