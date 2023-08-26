@@ -13,22 +13,21 @@
 				? document.getElementById(`dialog-${item.id}-kh`)
 				: document.getElementById(`dialog-${item.id}`);
 
-		// const submit_btn = document.getElementById(`btn-submit-${item.id}`);
-
 		// return value is `cancel` if user clicks X button, `default` if clicks submit button
 		if (dialog.returnValue === 'default') {
 			// bind values from the textarea elements to the submit buton
 			const textareas = Array.from(dialog.querySelector('form').querySelectorAll('textarea'));
 			const textarea_values = textareas.map((textarea) => textarea.value);
-			// submit_btn.value = JSON.stringify(textarea_values);
 
-			sections.find((section) => section.id === item.id).answers = textarea_values;
+			if(language === 'kh') {
+				sections.find((section) => section.id === item.id).answers_kh = textarea_values;
+			} else {
+				sections.find((section) => section.id === item.id).answers = textarea_values;
+			}
 
 			sectionsStore.set(sections);
 		}
 	}
-
-	// console.log(sections)
 </script>
 
 <dialog

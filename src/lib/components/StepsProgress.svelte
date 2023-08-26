@@ -27,27 +27,31 @@
 	$: count_progress(sections);
 </script>
 
-<progress
-	id="steps-progress"
-	class="steps-progress"
-	max={max_questions}
-	value={progress_value}
-	title="Steps until completion"
-/>
+<div class="steps-progress-wrapper">
+	<progress
+		id="steps-progress"
+		class="steps-progress"
+		max={max_questions}
+		value={progress_value}
+		title="Steps until completion"
+	/>
+</div>
 
 <style>
-	.steps-progress {
+	.steps-progress-wrapper .steps-progress {
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		appearance: none;
 		border: none;
 		outline: none;
-
 		border-radius: 100vmax;
 		background-color: var(--clr_grey_shade_e);
 		height: 0.5rem;
 		width: 100%;
 		margin-bottom: 2.5rem;
+	}
+	[data-theme='dark'] .steps-progress-wrapper .steps-progress {
+		background-color: var(--clr_grey_shade_a);
 	}
 	.steps-progress::-webkit-progress-bar {
 		background-color: var(--clr_grey_shade_e);

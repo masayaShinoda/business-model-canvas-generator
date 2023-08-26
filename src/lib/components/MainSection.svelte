@@ -55,6 +55,7 @@
 </div>
 
 <ResultButton {language} />
+<p>{JSON.stringify($sectionsStore)}</p>
 
 <style>
 	.hero-section {

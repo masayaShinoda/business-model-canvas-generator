@@ -6,9 +6,9 @@
 	let completed_questions = [];
 
 	export let language;
-	export let item_id
+	export let item_id;
 
-	$: item = $sectionsStore.find(section => section.id === item_id)
+	$: item = $sectionsStore.find((section) => section.id === item_id);
 
 	function openDialog() {
 		if (language === 'kh') {
@@ -45,8 +45,10 @@
 			{/if}
 			{#if language === 'kh'}
 				{#if item.questions_kh && item.questions_kh.length > 0}
-					{#each item.questions_kh as question}
-						<li>{question}</li>
+					{#each item.questions_kh as $question, $question_index}
+						<li class={`${item.answers_kh[$question_index].length > 0 ? 'completed' : ''}`}>
+							{$question}
+						</li>
 					{/each}
 				{/if}
 			{/if}
@@ -76,7 +78,7 @@
 		/* border-radius: 0.75rem; */
 		box-shadow: 0 0.25rem 0.425rem rgba(0, 0, 0, 0.125);
 		background-color: #fff;
-		background-color: color-mix(in srgb, #FFF49D 60%, #fff 40%);
+		background-color: color-mix(in srgb, #fff49d 60%, #fff 40%);
 		outline: 1px solid transparent;
 		transition: outline 200ms ease-out;
 	}
@@ -119,16 +121,16 @@
 		padding-left: 1rem;
 	}
 	.section-card ul li {
-		list-style-image: url("$lib/icons/checkbox-blank-circle.svg");
+		list-style-image: url('$lib/icons/checkbox-blank-circle.svg');
 		color: var(--clr_grey_shade_a);
 	}
 	[data-theme='dark'] .section-card ul li {
 		color: var(--clr_grey_shade_d);
-		list-style-image: url("$lib/icons/checkbox-blank-circle-white.svg");
+		list-style-image: url('$lib/icons/checkbox-blank-circle-white.svg');
 	}
-	
+
 	.section-card ul li.completed {
-		list-style-image: url("$lib/icons/checkbox-circle-fill.svg");
+		list-style-image: url('$lib/icons/checkbox-circle-fill.svg');
 	}
 	.section-card ul li:last-of-type {
 		margin-bottom: 0;
