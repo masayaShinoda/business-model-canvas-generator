@@ -5,3 +5,5 @@ export async function load() {
 		sections: sections ?? []
 	};
 }
+
+export const prerender = true
