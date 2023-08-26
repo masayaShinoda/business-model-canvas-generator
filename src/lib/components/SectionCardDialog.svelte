@@ -1,6 +1,5 @@
 <script>
 	import { sectionsStore } from '../../stores';
-	import CloseLine from '$lib/icons/close-line.svelte';
 
 	export let language;
 	export let item_id;
@@ -48,7 +47,11 @@
 				{/if}
 			</h2>
 			<button type="submit" value="cancel" aria-label="Close dialog" class="btn-close">
-				<CloseLine />
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+					><path
+						d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
+					/></svg
+				>
 			</button>
 		</section>
 		<section class="section-dialog__body">
@@ -159,6 +162,9 @@
 		cursor: pointer;
 		border-radius: 100vmax;
 		transform: translateX(1rem) translateY(-1rem);
+	}
+	[data-theme='dark'] .section-dialog .btn-close svg {
+		fill: #fff;
 	}
 	@media screen and (max-width: 40em) {
 		.section-dialog .btn-close {

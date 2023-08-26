@@ -73,10 +73,10 @@
 		min-height: 100%;
 		width: 100%;
 		padding: 1.5rem;
-		border-radius: 0.75rem;
-		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
+		/* border-radius: 0.75rem; */
+		box-shadow: 0 0.25rem 0.425rem rgba(0, 0, 0, 0.125);
 		background-color: #fff;
-		background-color: color-mix(in srgb, var(--clr_ivory) 50%, #fff 50%);
+		background-color: color-mix(in srgb, #FFF49D 60%, #fff 40%);
 		outline: 1px solid transparent;
 		transition: outline 200ms ease-out;
 	}

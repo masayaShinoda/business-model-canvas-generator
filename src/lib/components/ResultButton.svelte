@@ -20,9 +20,10 @@
 	@media screen and (max-width: 48em) {
 		#btn-result,
 		#btn-result-kh {
-			position: sticky;
+			/* position: sticky;
 			bottom: 5dvh;
-			margin: 0 auto;
+			margin: 0 auto; */
+			left: var(--content_padding_horizontal);
 			width: fit-content;
 			max-width: fit-content;
 		}
