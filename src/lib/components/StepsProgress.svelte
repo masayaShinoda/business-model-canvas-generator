@@ -1,16 +1,39 @@
 <script lang="ts">
-	import type { Database } from '$lib';
-    
-	export let sections: Array<Database['public']['Tables']['section']['Row']>;
+	import { sectionsStore, type SectionsWithAnswersType } from '../../stores';
 
-	let progress_value: number = 1;
-	let progress_max = sections.length;
+	let sections: SectionsWithAnswersType;
+	$: sections = $sectionsStore;
 
+	$: max_questions = 0;
+	$: progress_value = 0;
+
+	// count answers with length > 0
+	function count_progress(sections: SectionsWithAnswersType) {
+		// re-run again to prevent doubling numbers
+		max_questions = 0;
+		progress_value = 0;
+
+		sections.forEach((section) => {
+			section.answers?.forEach((answer) => {
+				if (answer.length > 0) {
+					progress_value++;
+				}
+				// answers array is initialized as an array of empty strings with same length as questions, so we can calculate all questions length this way
+				max_questions++;
+			});
+		});
+	}
+
+	$: count_progress(sections);
 </script>
 
-{#if progress_value > 0}
-     <progress id="steps-progress" class="steps-progress" max={progress_max} value={progress_value} />
-{/if}
+<progress
+	id="steps-progress"
+	class="steps-progress"
+	max={max_questions}
+	value={progress_value}
+	title="Steps until completion"
+/>
 
 <style>
 	.steps-progress {

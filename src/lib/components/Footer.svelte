@@ -16,4 +16,7 @@
 	footer a {
 		color: var(--clr_grey_shade_b);
 	}
+	[data-theme="dark"] footer a {
+		color: var(--clr_grey_shade_c);
+	}
 </style>

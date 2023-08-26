@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Database } from '$lib';
+	import { sectionsStore, type SectionsWithAnswersType } from '../../stores';
 	import StepsProgress from '$lib/components/StepsProgress.svelte';
 	import SectionCard from '$lib/components/SectionCard.svelte';
 	import ResultButton from '$lib/components/ResultButton.svelte';
 
 	export let language: 'en' | 'kh';
-	export let sections: Array<Database['public']['Tables']['section']['Row']>;
+	export let sections: SectionsWithAnswersType;
 </script>
 
 <div class="hero-section">
@@ -39,14 +39,14 @@
 </div>
 
 <div class="progress-container">
-	<StepsProgress {sections} />
+	<StepsProgress />
 </div>
 
 <div class="cards-container">
 	{#if sections}
 		{#each sections as item}
 			{#if item.questions && item.questions.length > 0}
-				<SectionCard {language} {item} />
+				<SectionCard {language} item_id={item.id} />
 			{/if}
 		{/each}
 	{:else}

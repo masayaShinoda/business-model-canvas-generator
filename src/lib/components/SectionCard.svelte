@@ -1,11 +1,14 @@
 <script>
+	import { sectionsStore } from '../../stores';
 	import SectionCardDialog from '$lib/components/SectionCardDialog.svelte';
 	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
 
 	let completed_questions = [];
 
 	export let language;
-	export let item;
+	export let item_id
+
+	$: item = $sectionsStore.find(section => section.id === item_id)
 
 	function openDialog() {
 		if (language === 'kh') {
@@ -34,8 +37,10 @@
 		</span>
 		<ul>
 			{#if language === 'en'}
-				{#each item.questions as question}
-					<li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li>
+				{#each item.questions as $question, $question_index}
+					<li class={`${item.answers[$question_index].length > 0 ? 'completed' : ''}`}>
+						{$question}
+					</li>
 				{/each}
 			{/if}
 			{#if language === 'kh'}
@@ -48,7 +53,7 @@
 		</ul>
 	</button>
 </section>
-<SectionCardDialog {language} {item} />
+<SectionCardDialog {language} {item_id} />
 
 <style>
 	.section-card .card-btn {

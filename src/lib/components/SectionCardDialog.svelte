@@ -1,8 +1,12 @@
 <script>
-	export let item;
-	export let language;
-
+	import { sectionsStore } from '../../stores';
 	import CloseLine from '$lib/icons/close-line.svelte';
+
+	export let language;
+	export let item_id;
+
+	$: sections = $sectionsStore;
+	$: item = $sectionsStore.find((section) => section.id === item_id);
 
 	function onClose() {
 		const dialog =
@@ -10,24 +14,22 @@
 				? document.getElementById(`dialog-${item.id}-kh`)
 				: document.getElementById(`dialog-${item.id}`);
 
-		const submit_btn = document.getElementById('btn-submit');
-
-		// const output_box = document.querySelector(`[data-output-id="${item.id}"]`);
+		// const submit_btn = document.getElementById(`btn-submit-${item.id}`);
 
 		// return value is `cancel` if user clicks X button, `default` if clicks submit button
 		if (dialog.returnValue === 'default') {
 			// bind values from the textarea elements to the submit buton
 			const textareas = Array.from(dialog.querySelector('form').querySelectorAll('textarea'));
-			const textarea_values = textareas.map((textarea) => {
-				return {
-					question: textarea.name,
-					answer: textarea.value
-				};
-			});
+			const textarea_values = textareas.map((textarea) => textarea.value);
+			// submit_btn.value = JSON.stringify(textarea_values);
 
-			submit_btn.value = JSON.stringify(textarea_values);
+			sections.find((section) => section.id === item.id).answers = textarea_values;
+
+			sectionsStore.set(sections);
 		}
 	}
+
+	// console.log(sections)
 </script>
 
 <dialog
@@ -76,7 +78,7 @@
 			</div>
 		</section>
 		<section class="section-dialog__bottom">
-			<button id="btn-submit" type="submit" value="default" class="btn_main">
+			<button id={`btn-submit-${item.id}`} type="submit" value="default" class="btn_main">
 				{#if language === 'kh'}
 					រួចរាល់
 				{:else}
@@ -178,7 +180,7 @@
 
 	.section-dialog__body {
 		overflow-y: auto;
-		height: 60dvh;
+		height: 65dvh;
 		scroll-padding: 1.5rem 0;
 	}
 	@media screen and (max-width: 64em) {
@@ -228,11 +230,11 @@
 	}
 
 	.section-dialog__bottom {
-		padding: 1rem 0 0 0;
+		padding: 1rem 0 1rem 0;
 		position: sticky;
 		bottom: 0;
-		border-top: 1px solid var(--clr_grey_shade_d);
 		background-color: #fff;
+		border-top: 1px solid var(--clr_grey_shade_d);
 	}
 	[data-theme='dark'] .section-dialog .section-dialog__bottom {
 		background-color: var(--clr_dark_shade_a);
