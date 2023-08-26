@@ -1,10 +1,18 @@
 <script lang="ts">
+	import { questionsAnswersStore } from '../../stores.js';
 	import MainSection from '$lib/components/MainSection.svelte';
 	import type { Database } from '$lib';
 
+	// data from +layout.server.js
 	export let data;
 
-	const sections: Array<Database['public']['Tables']['section']['Row']> = data.sections;
+	let sections: Array<Database['public']['Tables']['section']['Row']> = [];
+
+	questionsAnswersStore.set(data.sections);
+
+	questionsAnswersStore.subscribe((value) => {
+		sections = value;
+	});
 </script>
 
 <svelte:head>

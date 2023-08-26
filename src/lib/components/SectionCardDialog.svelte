@@ -74,6 +74,8 @@
 					{/if}
 				{/if}
 			</div>
+		</section>
+		<section class="section-dialog__bottom">
 			<button id="btn-submit" type="submit" value="default" class="btn_main">
 				{#if language === 'kh'}
 					រួចរាល់
@@ -91,15 +93,21 @@
 		border: none;
 		border-radius: 1rem;
 		box-shadow: 0 0.325rem 0.5rem rgba(0, 0, 0, 0.175);
-		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 6.5));
+		width: calc(var(--content_max_width) - calc(var(--content_padding_horizontal) * 10));
 		max-width: var(--content_max_width);
 		margin-top: 5dvh;
 		max-height: 85dvh;
 		padding: 0;
+		overflow: hidden;
 	}
-	@media screen and (max-width: 40em) {
+	@media screen and (max-width: 64em) {
 		.section-dialog {
-			width: 85%;
+			width: 80vw;
+		}
+	}
+	@media screen and (max-width: 48em) {
+		.section-dialog {
+			width: 90vw;
 		}
 	}
 	.section-dialog form {
@@ -107,21 +115,27 @@
 		padding: 1.5rem;
 	}
 	@media screen and (max-width: 40em) {
-		.section-dialog {
+		.section-dialog form {
 			padding: 1rem;
 		}
 	}
+
 	[data-theme='dark'] .section-dialog form {
 		background-color: var(--clr_dark_shade_a);
 	}
 
 	.section-dialog::backdrop {
-		background-color: rgba(0, 0, 0, 0.25);
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 	.section-dialog__top {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		border-bottom: 1px solid var(--clr_grey_shade_d);
+	}
+	[data-theme='dark'] .section-dialog .section-dialog__top {
+		background-color: var(--clr_dark_shade_a);
+		border-bottom-color: var(--clr_grey_shade_a);
 	}
 	.section-dialog__top h2 {
 		margin-top: 0;
@@ -163,15 +177,30 @@
 	}
 
 	.section-dialog__body {
-		margin-top: 1rem;
+		overflow-y: auto;
+		height: 60dvh;
+		scroll-padding: 1.5rem 0;
+	}
+	@media screen and (max-width: 64em) {
+		.section-dialog__body {
+			height: 70dvh;
+			padding-right: 1.5rem;
+		}
+	}
+	@media screen and (max-width: 48em) {
+		.section-dialog__body {
+			height: 70dvh;
+		}
 	}
 	.section-dialog__body .inputs-container {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		margin-bottom: 1.5rem;
+		padding: 0.5rem 0;
 	}
 	.section-dialog__body .inputs-container label {
+		margin-top: 1rem;
+		font-size: var(--type_scale_2);
 		color: var(--clr_grey_shade_a);
 	}
 	[data-theme='dark'] .section-dialog__body .inputs-container label {
@@ -179,11 +208,12 @@
 	}
 
 	.section-dialog__body .inputs-container textarea {
+		font-family: inherit;
 		resize: vertical;
-		margin: 0.5rem 0 1rem 0;
+		margin: 0.5rem 0 1.5rem 0;
 		padding: 0.5rem;
 		min-width: min(37.5rem, calc(100% - 1rem));
-		min-height: 5rem;
+		min-height: 16ch;
 		outline: none;
 		font-size: 1rem;
 		border-radius: 0.5rem;
@@ -195,5 +225,22 @@
 		color: #fff;
 		background-color: var(--clr_grey_shade_a);
 		border-color: var(--clr_grey_shade_b);
+	}
+
+	.section-dialog__bottom {
+		padding: 1rem 0 0 0;
+		position: sticky;
+		bottom: 0;
+		border-top: 1px solid var(--clr_grey_shade_d);
+		background-color: #fff;
+	}
+	[data-theme='dark'] .section-dialog .section-dialog__bottom {
+		background-color: var(--clr_dark_shade_a);
+		border-top-color: var(--clr_grey_shade_a);
+	}
+	@media screen and (max-width: 48em) {
+		.section-dialog__bottom {
+			padding-bottom: 1rem;
+		}
 	}
 </style>

@@ -11,7 +11,7 @@
 	});
 
 	function toggleTheme() {
-		themeStore.update((theme) => (theme === "light" ? "dark" : "light"))
+		themeStore.update((theme) => (theme === 'light' ? 'dark' : 'light'));
 	}
 </script>
 
@@ -48,15 +48,18 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: .5rem;
+		padding: 0.5rem;
 		cursor: pointer;
-		
+
 		background: none;
-		border: none;
+		border: 1px solid var(--clr_grey_shade_a);
 		border-radius: 100vmax;
+		transition: transform 50ms ease-out;
 	}
-	[data-theme="dark"] header .btn-toggle-theme {
+	[data-theme='dark'] header .btn-toggle-theme {
 		filter: invert(1);
 	}
-
+	header .btn-toggle-theme:active {
+		transform: translateY(.25rem)
+	}
 </style>

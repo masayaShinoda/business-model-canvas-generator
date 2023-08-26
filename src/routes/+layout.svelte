@@ -4,14 +4,13 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
-	
 	onMount(() => {
 		function set_theme(theme) {
 			localStorage.setItem('preferred-theme', theme);
 			themeStore.update(() => theme);
 			document.body.dataset.theme = theme;
 		}
-		
+
 		// check localStorage for theme preference
 		const stored_theme = localStorage.getItem('preferred-theme');
 
@@ -36,7 +35,6 @@
 			set_theme(value);
 		});
 	});
-
 </script>
 
 <Navbar />

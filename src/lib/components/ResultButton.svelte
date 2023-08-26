@@ -2,8 +2,6 @@
 	export let language;
 </script>
 
-
-
 {#if language === 'kh'}
 	<button disabled id="btn-result" class="btn_main btn_main__inactive">បង្ហាញលទ្ធផល</button>
 {:else}
@@ -25,6 +23,8 @@
 			position: sticky;
 			bottom: 5dvh;
 			margin: 0 auto;
+			width: fit-content;
+			max-width: fit-content;
 		}
 	}
 </style>

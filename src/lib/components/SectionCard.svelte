@@ -2,8 +2,7 @@
 	import SectionCardDialog from '$lib/components/SectionCardDialog.svelte';
 	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
 
-	export let completed = false;
-	export let completed_questions = [];
+	let completed_questions = [];
 
 	export let language;
 	export let item;
@@ -27,7 +26,7 @@
 					{item.title_kh}
 				{/if}
 			</h2>
-			{#if completed}
+			{#if completed_questions.length === item.questions}
 				<span class="icon">
 					<CheckboxCircleFill />
 				</span>
@@ -36,8 +35,7 @@
 		<ul>
 			{#if language === 'en'}
 				{#each item.questions as question}
-					<!-- <li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li> -->
-					<li class='completed'>{question}</li>
+					<li class={`${question in completed_questions ? 'completed' : ''}`}>{question}</li>
 				{/each}
 			{/if}
 			{#if language === 'kh'}
@@ -50,7 +48,6 @@
 		</ul>
 	</button>
 </section>
-<!-- <output data-output-id={item.id} style="padding: 1rem 0 2rem 0; margin: 2rem 0; min-height: 5rem;" /> -->
 <SectionCardDialog {language} {item} />
 
 <style>
