@@ -1,13 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	import { themeStore } from '../stores';
+	import { themeStore, sectionsStore } from '../stores';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
 		function set_theme(theme) {
 			localStorage.setItem('preferred-theme', theme);
-			themeStore.update(() => theme);
+			themeStore.set(theme);
 			document.body.dataset.theme = theme;
 		}
 
@@ -35,6 +35,9 @@
 			set_theme(value);
 		});
 	});
+
+	export let data;
+	sectionsStore.set(data.sections);
 </script>
 
 <Navbar />

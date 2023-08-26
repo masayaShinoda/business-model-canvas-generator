@@ -1,20 +1,23 @@
-<script>
+<script lang="ts">
 	import { sectionsStore } from '../../stores';
 	import SectionCardDialog from '$lib/components/SectionCardDialog.svelte';
 	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
 
 	let completed_questions = [];
 
-	export let language;
-	export let item_id;
+	export let language: 'en' | 'kh';
+	export let item_id: number;
 
-	$: item = $sectionsStore.find((section) => section.id === item_id);
+	$: item = $sectionsStore.find(section => section.id === item_id)
+
 
 	function openDialog() {
 		if (language === 'kh') {
-			document.getElementById(`dialog-${item.id}-kh`).showModal();
+			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}-kh`)
+			dialog?.showModal();
 		} else {
-			document.getElementById(`dialog-${item.id}`).showModal();
+			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}`)
+			dialog?.showModal();
 		}
 	}
 </script>
@@ -24,12 +27,12 @@
 		<span class="section-card__top">
 			<h2>
 				{#if language === 'en'}
-					{item.title}
+					{item?.title}
 				{:else}
-					{item.title_kh}
+					{item?.title_kh}
 				{/if}
 			</h2>
-			{#if completed_questions.length === item.questions}
+			{#if completed_questions.length === item?.questions?.length}
 				<span class="icon">
 					<CheckboxCircleFill />
 				</span>
@@ -37,18 +40,24 @@
 		</span>
 		<ul>
 			{#if language === 'en'}
-				{#each item.questions as $question, $question_index}
-					<li class={`${item.answers[$question_index].length > 0 ? 'completed' : ''}`}>
-						{$question}
-					</li>
-				{/each}
+				{#if item?.questions && item?.questions.length > 0}
+					{#each item?.questions as question, index}
+						{#if item?.answers}
+							<li class={`${item?.answers[index].length > 0 ? 'completed' : ''}`}>
+								{question}
+							</li>
+						{/if}
+					{/each}
+				{/if}
 			{/if}
 			{#if language === 'kh'}
-				{#if item.questions_kh && item.questions_kh.length > 0}
-					{#each item.questions_kh as $question, $question_index}
-						<li class={`${item.answers_kh[$question_index].length > 0 ? 'completed' : ''}`}>
-							{$question}
-						</li>
+				{#if item?.questions_kh && item?.questions_kh.length > 0}
+					{#each item?.questions_kh as question, index}
+						{#if item?.answers_kh}
+							<li class={`${item?.answers_kh[index].length > 0 ? 'completed' : ''}`}>
+								{question}
+							</li>
+						{/if}
 					{/each}
 				{/if}
 			{/if}

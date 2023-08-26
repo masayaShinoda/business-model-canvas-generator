@@ -6,7 +6,8 @@
 	import ResultButton from '$lib/components/ResultButton.svelte';
 
 	export let language: 'en' | 'kh';
-	export let sections: SectionsWithAnswersType;
+	let sections: SectionsWithAnswersType;
+	$: sections = $sectionsStore
 </script>
 
 <div class="hero-section">
