@@ -4,6 +4,8 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
+	export let data;
+
 	onMount(() => {
 		function set_theme(theme) {
 			localStorage.setItem('preferred-theme', theme);
@@ -34,10 +36,15 @@
 		themeStore.subscribe((value) => {
 			set_theme(value);
 		});
-	});
 
-	export let data;
-	sectionsStore.set(data.sections);
+		// check localStorage for exiting `user_answers`
+		if (localStorage.getItem(`user_answers`)) {
+			sectionsStore.set(JSON.parse(localStorage.getItem(`user_answers`)))
+		} else {
+			sectionsStore.set(data.sections);
+		}
+		// sectionsStore.set(data.sections);
+	});
 </script>
 
 <Navbar />

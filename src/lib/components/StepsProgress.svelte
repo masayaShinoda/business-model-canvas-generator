@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { sectionsStore, type SectionsWithAnswersType } from '../../stores';
 
+	export let language: 'en' | 'kh'
+
 	let sections: SectionsWithAnswersType;
 	$: sections = $sectionsStore;
 
@@ -14,13 +16,25 @@
 		progress_value = 0;
 
 		sections.forEach((section) => {
-			section.answers?.forEach((answer) => {
-				if (answer.length > 0) {
-					progress_value++;
-				}
-				// answers array is initialized as an array of empty strings with same length as questions, so we can calculate all questions length this way
-				max_questions++;
-			});
+			if(language === 'kh') {
+				section.answers_kh?.forEach((answer) => {
+					if (answer.length > 0) {
+						progress_value++;
+					}
+					// answers array is initialized as an array of empty strings with same length as questions, so we can calculate all questions length this way
+					max_questions++;
+				});
+			} else {
+				section.answers?.forEach((answer) => {
+					if (answer.length > 0) {
+						progress_value++;
+					}
+					// answers array is initialized as an array of empty strings with same length as questions, so we can calculate all questions length this way
+					max_questions++;
+				});
+			}
+
+
 		});
 	}
 
@@ -33,7 +47,7 @@
 		class="steps-progress"
 		max={max_questions}
 		value={progress_value}
-		title="Steps until completion"
+		title={`${progress_value} / ${max_questions} steps completed`}
 	/>
 </div>
 

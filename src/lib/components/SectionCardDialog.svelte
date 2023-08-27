@@ -17,7 +17,7 @@
 		if (dialog.returnValue === 'default') {
 			// bind values from the textarea elements to the submit buton
 			const textareas = Array.from(dialog.querySelector('form').querySelectorAll('textarea'));
-			const textarea_values = textareas.map((textarea) => textarea.value);
+			const textarea_values = textareas.map((textarea) => textarea.value.trim());
 
 			if(language === 'kh') {
 				sections.find((section) => section.id === item.id).answers_kh = textarea_values;
@@ -26,6 +26,8 @@
 			}
 
 			sectionsStore.set(sections);
+
+			localStorage.setItem("user_answers", JSON.stringify(sections))
 		}
 	}
 </script>
@@ -206,7 +208,6 @@
 		padding: 0.5rem 0;
 	}
 	.section-dialog__body .inputs-container label {
-		margin-top: 1rem;
 		font-size: var(--type_scale_2);
 		color: var(--clr_grey_shade_a);
 	}
@@ -232,6 +233,9 @@
 		color: #fff;
 		background-color: var(--clr_grey_shade_a);
 		border-color: var(--clr_grey_shade_b);
+	}
+	.section-dialog__body .inputs-container textarea:last-of-type {
+		margin-bottom: 2.5rem;
 	}
 
 	.section-dialog__bottom {

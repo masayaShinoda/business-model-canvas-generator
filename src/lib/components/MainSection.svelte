@@ -28,6 +28,9 @@
 					>ស្វែងយល់បន្ថែម</a
 				> (អត្ថបទជាភាសាអង់គ្លេស)។
 			</p>
+			<p>
+				អ្នកមិនចាំបាច់ឆ្លើយសំណួរទាំងអស់នោះទេដើម្បីបង្កើតផ្ទាំងគំរូអាជីវកម្ម។
+			</p>
 		{:else}
 			<p>
 				The Business Model Canvas is a strategic management template used to describe, design,
@@ -35,12 +38,15 @@
 					href="https://en.wikipedia.org/wiki/Business_Model_Canvas">Learn more about the BMC.</a
 				>
 			</p>
+			<p>
+				Tip: You don't have to answer ALL the questions to be able to create a canvas!
+			</p>
 		{/if}
 	</span>
 </div>
 
 <div class="progress-container">
-	<StepsProgress />
+	<StepsProgress {language} />
 </div>
 
 <div class="cards-container">

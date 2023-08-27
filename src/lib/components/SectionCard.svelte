@@ -10,7 +10,6 @@
 
 	$: item = $sectionsStore.find(section => section.id === item_id)
 
-
 	function openDialog() {
 		if (language === 'kh') {
 			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}-kh`)
@@ -130,8 +129,10 @@
 		padding-left: 1rem;
 	}
 	.section-card ul li {
-		list-style-image: url('$lib/icons/checkbox-blank-circle.svg');
 		color: var(--clr_grey_shade_a);
+		list-style-image: url('$lib/icons/checkbox-blank-circle.svg');
+		transition-delay: 500ms;
+		transition: 200ms ease-in-out all;
 	}
 	[data-theme='dark'] .section-card ul li {
 		color: var(--clr_grey_shade_d);
