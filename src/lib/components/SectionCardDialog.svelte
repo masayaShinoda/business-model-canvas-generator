@@ -1,97 +1,120 @@
-<script>
-	import { sectionsStore } from '../../stores';
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { sectionsStore, type SectionsWithAnswersType } from '../../stores';
 
-	export let language;
-	export let item_id;
+	export let language: 'en' | 'kh';
+	export let item_id: number;
+
+	let sections: SectionsWithAnswersType;
 
 	$: sections = $sectionsStore;
 	$: item = $sectionsStore.find((section) => section.id === item_id);
 
-	function onClose() {
-		const dialog =
+	let onClose: () => void
+	
+	onMount(() => {
+		const dialog: HTMLDialogElement | null =
 			language === 'kh'
-				? document.getElementById(`dialog-${item.id}-kh`)
-				: document.getElementById(`dialog-${item.id}`);
-
-		// return value is `cancel` if user clicks X button, `default` if clicks submit button
-		if (dialog.returnValue === 'default') {
-			// bind values from the textarea elements to the submit buton
-			const textareas = Array.from(dialog.querySelector('form').querySelectorAll('textarea'));
-			const textarea_values = textareas.map((textarea) => textarea.value.trim());
-
-			if(language === 'kh') {
-				sections.find((section) => section.id === item.id).answers_kh = textarea_values;
-			} else {
-				sections.find((section) => section.id === item.id).answers = textarea_values;
+				? document.querySelector(`dialog#dialog-${item_id}-kh`)
+				: document.querySelector(`dialog#dialog-${item_id}`);
+	
+		const textarea_elements = dialog?.querySelector('form')?.querySelectorAll('textarea');
+		const textareas = textarea_elements && Array.from(textarea_elements);
+	
+		onClose = () => {
+			// return value is `cancel` if user clicks X button, `default` if clicks submit button
+			if (dialog && dialog.returnValue === 'default') {
+				// bind values from the textarea elements to the submit buton
+				const textarea_values = textareas?.map((textarea) => textarea.value.trim());
+	
+				const section = sections.find((section) => section.id === item_id);
+				if (section) {
+					if (language === 'kh') {
+						section.answers_kh = textarea_values;
+					} else {
+						section.answers = textarea_values;
+					}
+				}
+	
+				sectionsStore.set(sections);
+				localStorage.setItem('user_answers', JSON.stringify(sections));
 			}
-
-			sectionsStore.set(sections);
-
-			localStorage.setItem("user_answers", JSON.stringify(sections))
 		}
-	}
+
+		// pre-fill textareas with values in store
+		textareas?.map((textarea, i) => {
+			if(item && item.answers) {
+				textarea.value = item.answers[i]
+			}
+		})
+	})
+
 </script>
 
-<dialog
-	id={language === 'kh' ? `dialog-${item.id}-kh` : `dialog-${item.id}`}
-	class="section-dialog"
-	aria-label={language === 'kh' ? item.title_kh : item.title}
-	on:close={onClose}
->
-	<form id={language === 'kh' ? `form-${item.id}-kh` : `form-${item.id}`} method="dialog">
-		<section class="section-dialog__top">
-			<h2>
-				{#if language === 'kh'}
-					{item.title_kh}
-				{:else}
-					{item.title}
-				{/if}
-			</h2>
-			<button type="submit" value="cancel" aria-label="Close dialog" class="btn-close">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-					><path
-						d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
-					/></svg
-				>
-			</button>
-		</section>
-		<section class="section-dialog__body">
-			<div class="inputs-container">
-				{#if language === 'en'}
-					{#each item.questions as question, index}
-						<label for={`item-${item.id}-question-${index + 1}`}>{question}</label>
-						<textarea
-							id={`item-${item.id}-question-${index + 1}`}
-							name={question}
-							form={`form-${item.id}`}
-						/>
-					{/each}
-				{/if}
-				{#if language === 'kh'}
-					{#if item.questions_kh && item.questions_kh.length > 0}
-						{#each item.questions_kh as question_kh, index}
-							<label for={`item-${item.id}-question-${index + 1}-kh`}>{question_kh}</label>
-							<textarea
-								id={`item-${item.id}-question-${index + 1}-kh`}
-								name={question_kh}
-								form={`form-${item.id}-kh`}
-							/>
-						{/each}
+{#if item}
+	<dialog
+		id={language === 'kh' ? `dialog-${item.id}-kh` : `dialog-${item.id}`}
+		class="section-dialog"
+		aria-label={language === 'kh' ? item.title_kh : item.title}
+		on:close={onClose}
+	>
+		<form id={language === 'kh' ? `form-${item.id}-kh` : `form-${item.id}`} method="dialog">
+			<section class="section-dialog__top">
+				<h2>
+					{#if language === 'kh'}
+						{item.title_kh}
+					{:else}
+						{item.title}
 					{/if}
-				{/if}
-			</div>
-		</section>
-		<section class="section-dialog__bottom">
-			<button id={`btn-submit-${item.id}`} type="submit" value="default" class="btn_main">
-				{#if language === 'kh'}
-					រួចរាល់
-				{:else}
-					Done
-				{/if}
-			</button>
-		</section>
-	</form>
-</dialog>
+				</h2>
+				<button type="submit" value="cancel" aria-label="Close dialog" class="btn-close">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						><path
+							d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
+						/></svg
+					>
+				</button>
+			</section>
+			<section class="section-dialog__body">
+				<div class="inputs-container">
+					{#if language === 'en'}
+						{#if item.questions && item.questions.length > 0}
+							{#each item.questions as question, index}
+								<label for={`item-${item.id}-question-${index + 1}`}>{question}</label>
+								<textarea
+									id={`item-${item.id}-question-${index + 1}`}
+									name={question}
+									form={`form-${item.id}`}
+								/>
+							{/each}
+						{/if}
+					{/if}
+					{#if language === 'kh'}
+						{#if item.questions_kh && item.questions_kh.length > 0}
+							{#each item.questions_kh as question_kh, index}
+								<label for={`item-${item.id}-question-${index + 1}-kh`}>{question_kh}</label>
+								<textarea
+									id={`item-${item.id}-question-${index + 1}-kh`}
+									name={question_kh}
+									form={`form-${item.id}-kh`}
+								/>
+							{/each}
+						{/if}
+					{/if}
+				</div>
+			</section>
+			<section class="section-dialog__bottom">
+				<button id={`btn-submit-${item.id}`} type="submit" value="default" class="btn_main">
+					{#if language === 'kh'}
+						រួចរាល់
+					{:else}
+						Done
+					{/if}
+				</button>
+			</section>
+		</form>
+	</dialog>
+{/if}
 
 <style>
 	.section-dialog {

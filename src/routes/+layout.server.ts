@@ -1,4 +1,4 @@
-import { sections } from '../lib/test_data'
+import { sections } from '$lib/test_data'
 
 export async function load() {
 	return {

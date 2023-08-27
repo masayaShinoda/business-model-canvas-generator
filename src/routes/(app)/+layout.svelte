@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
-	import { themeStore, sectionsStore } from '../stores';
+	import { themeStore, sectionsStore } from '../../stores';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
 	export let data;
 
 	onMount(() => {
-		function set_theme(theme) {
+		function set_theme(theme: string) {
 			localStorage.setItem('preferred-theme', theme);
 			themeStore.set(theme);
 			document.body.dataset.theme = theme;
@@ -33,17 +33,16 @@
 			}
 		}
 
-		themeStore.subscribe((value) => {
+		themeStore.subscribe((value: string) => {
 			set_theme(value);
 		});
 
 		// check localStorage for exiting `user_answers`
 		if (localStorage.getItem(`user_answers`)) {
-			sectionsStore.set(JSON.parse(localStorage.getItem(`user_answers`)))
+			sectionsStore.set(JSON.parse(localStorage.getItem(`user_answers`) ?? ''))
 		} else {
 			sectionsStore.set(data.sections);
 		}
-		// sectionsStore.set(data.sections);
 	});
 </script>
 

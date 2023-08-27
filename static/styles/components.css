@@ -20,11 +20,17 @@ a.btn_main {
 	margin-right: 0.75rem;
 }
 
-.btn_main:hover {
+.btn_main:hover,
+.btn_main:focus-visible {
 	filter: brightness(0.9);
 }
 
-[data-theme='dark'] .btn_main:hover {
+.btn_main:active {
+	transform: translateY(.25rem);
+}
+
+[data-theme='dark'] .btn_main:hover,
+[data-theme='dark'] .btn_main:focus-visible {
 	filter: brightness(1.1);
 }
 
@@ -66,10 +72,14 @@ a.btn_main {
 	cursor: not-allowed;
 }
 .btn_main__inactive:hover,
-.btn_main__inactive:focus,
+.btn_main__inactive:focus-visible,
 .btn_main:disabled:hover,
-.btn_main:disabled:focus {
+.btn_main:disabled:focus-visible {
 	filter: none;
+}
+.btn_main__inactive:active,
+.btn_main:disabled:active {
+	transform: none;
 }
 
 [data-theme='dark'] .btn_main__inactive {
