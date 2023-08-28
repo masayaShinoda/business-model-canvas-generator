@@ -10,23 +10,23 @@
 	$: sections = $sectionsStore;
 	$: item = $sectionsStore.find((section) => section.id === item_id);
 
-	let onClose: () => void
-	
+	let onClose: () => void;
+
 	onMount(() => {
 		const dialog: HTMLDialogElement | null =
 			language === 'kh'
 				? document.querySelector(`dialog#dialog-${item_id}-kh`)
 				: document.querySelector(`dialog#dialog-${item_id}`);
-	
+
 		const textarea_elements = dialog?.querySelector('form')?.querySelectorAll('textarea');
 		const textareas = textarea_elements && Array.from(textarea_elements);
-	
+
 		onClose = () => {
 			// return value is `cancel` if user clicks X button, `default` if clicks submit button
 			if (dialog && dialog.returnValue === 'default') {
 				// bind values from the textarea elements to the submit buton
 				const textarea_values = textareas?.map((textarea) => textarea.value.trim());
-	
+
 				const section = sections.find((section) => section.id === item_id);
 				if (section) {
 					if (language === 'kh') {
@@ -35,20 +35,25 @@
 						section.answers = textarea_values;
 					}
 				}
-	
+
 				sectionsStore.set(sections);
 				localStorage.setItem('user_answers', JSON.stringify(sections));
 			}
-		}
+		};
 
 		// pre-fill textareas with values in store
 		textareas?.map((textarea, i) => {
-			if(item && item.answers) {
-				textarea.value = item.answers[i]
+			if (language === 'kh') {
+				if (item && item.answers_kh) {
+					textarea.value = item.answers_kh[i];
+				}
+			} else {
+				if (item && item.answers) {
+					textarea.value = item.answers[i];
+				}
 			}
-		})
-	})
-
+		});
+	});
 </script>
 
 {#if item}
@@ -85,6 +90,7 @@
 									id={`item-${item.id}-question-${index + 1}`}
 									name={question}
 									form={`form-${item.id}`}
+									maxlength="250"
 								/>
 							{/each}
 						{/if}
@@ -97,6 +103,7 @@
 									id={`item-${item.id}-question-${index + 1}-kh`}
 									name={question_kh}
 									form={`form-${item.id}-kh`}
+									maxlength="250"
 								/>
 							{/each}
 						{/if}

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { sectionsStore, type SectionsWithAnswersType } from '../../stores';
 	import StepsProgress from '$lib/components/StepsProgress.svelte';
 	import SectionCard from '$lib/components/SectionCard.svelte';
@@ -21,7 +20,7 @@
 		</h1>
 	</span>
 	<span>
-		{#if $page.url.pathname === '/kh'}
+		{#if language === 'kh'}
 			<p>
 				ផ្ទាំងគំរូអាជីវកម្មគឺជាគំរូគ្រប់គ្រងយុទ្ធសាស្ត្រដែលប្រើដើម្បីពិពណ៌នា បង្កើត
 				និងជំរុញគំរូអាជីវកម្ម។ <a href="https://en.wikipedia.org/wiki/Business_Model_Canvas"
