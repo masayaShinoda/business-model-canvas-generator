@@ -42,6 +42,7 @@
 					toPng(results_grid, {
 						backgroundColor: '#fff',
 						pixelRatio: 8
+						Math.min(2, window.devicePixelRatio)
 					})
 						.then((dataUrl) => {
 							download(dataUrl, `business-model-canvas-${get_download_date()}`);
