@@ -93,11 +93,11 @@
 		border-radius: 100vmax;
 		outline: none;
 		border: none;
-		padding: 0.875rem 1rem;
 		font-size: 1.125rem;
 		position: fixed;
 		width: 12.5rem;
-		bottom: 3dvh;
+		height: 3.5rem;
+		bottom: 2.5rem;
 		left: 50%;
 		margin-left: -6.25rem;
 		cursor: pointer;
@@ -139,10 +139,14 @@
 		color: #0077cc;
 
 		border-radius: 100vmax;
-		padding: 0.875rem;
-		font-size: 1.125rem;
+		width: 3.5rem;
+		height: 3.5rem;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+
 		position: fixed;
-		bottom: 3.5dvh;
+		bottom: 2.5rem;
 		left: 50%;
 		margin-left: -11rem;
 		cursor: pointer;
