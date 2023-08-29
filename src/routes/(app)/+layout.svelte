@@ -46,10 +46,6 @@
 	});
 </script>
 
-<svelte:head>
-	<meta property="og:image" content="/masaya-business-model-canvas-generator-thumbnail.jpg" />
-	<meta property="twitter:image" content="/masaya-business-model-canvas-generator-thumbnail.jpg" />
-</svelte:head>
 <Navbar />
 <slot />
 <Footer />

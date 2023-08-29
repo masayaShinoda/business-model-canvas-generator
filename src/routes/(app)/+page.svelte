@@ -10,10 +10,7 @@
 	/>
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta
-		property="og:title"
-		content="Business Model Canvas Generator"
-	/>
+	<meta property="og:title" content="Business Model Canvas Generator" />
 	<meta
 		property="og:description"
 		content="Web tool to generate a Business Model Canvas (BMC) based on user answers."
@@ -25,6 +22,9 @@
 		property="twitter:description"
 		content="Web tool to generate a Business Model Canvas (BMC) based on user answers."
 	/>
+
+	<meta property="og:image" content="/masaya-business-model-canvas-generator-thumbnail.jpg" />
+	<meta property="twitter:image" content="/masaya-business-model-canvas-generator-thumbnail.jpg" />
 </svelte:head>
 <main>
 	<MainSection language="en" />
