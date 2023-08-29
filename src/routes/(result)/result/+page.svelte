@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { sectionsStore, type SectionsWithAnswersType } from '../../../stores';
+	import { sectionsStore } from '../../../stores';
 	import { onMount } from 'svelte';
 	import ResultCanvas from '$lib/components/result/ResultCanvas.svelte';
 	// import * as htmlToImage from 'html-to-image';

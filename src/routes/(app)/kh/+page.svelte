@@ -8,6 +8,26 @@
 		name="description"
 		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​ (Business Model Canvas ឬ​សរសេរកាត់ថា BMC)."
 	/>
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta
+		property="og:title"
+		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​ - Business Model Canvas Generator"
+	/>
+	<meta
+		property="og:description"
+		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​ (Business Model Canvas ឬ​សរសេរកាត់ថា BMC)."
+	/>
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta
+		property="twitter:title"
+		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​ - Business Model Canvas Generator"
+	/>
+	<meta
+		property="twitter:description"
+		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​ (Business Model Canvas ឬ​សរសេរកាត់ថា BMC)."
+	/>
 </svelte:head>
 <main lang="km">
 	<MainSection language="kh" />
