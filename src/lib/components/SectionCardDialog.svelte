@@ -144,6 +144,7 @@
 	@media screen and (max-width: 48em) {
 		.section-dialog {
 			width: 90vw;
+			max-height: 90dvh;
 		}
 	}
 	.section-dialog form {
