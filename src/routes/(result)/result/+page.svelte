@@ -41,8 +41,7 @@
 				setTimeout(() => {
 					toPng(results_grid, {
 						backgroundColor: '#fff',
-						pixelRatio: 8
-						Math.min(2, window.devicePixelRatio)
+						pixelRatio: 3.5
 					})
 						.then((dataUrl) => {
 							download(dataUrl, `business-model-canvas-${get_download_date()}`);

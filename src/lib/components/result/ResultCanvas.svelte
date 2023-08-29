@@ -92,7 +92,8 @@
         --a4_landscape_h: 210mm; */
 		margin: 0 auto;
 		min-height: 100%;
-		width: 297mm;
+		/* width: 297mm; */
+		width: 1160px;
 		/* aspect-ratio: 100 / 59; */
 		overflow: visible;
 	}
