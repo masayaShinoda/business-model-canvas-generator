@@ -37,6 +37,8 @@
 		min-height: 200%;
 		padding: 1rem;
 		overflow-x: visible;
+		max-width: 100%;
+		overflow: scroll;
 	}
 	main[lang='km'] {
 		font-family: 'Khmer', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica,
