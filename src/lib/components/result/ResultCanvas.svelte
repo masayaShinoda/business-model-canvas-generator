@@ -13,13 +13,13 @@
 	import TeamLine from '$lib/icons/team-line.svelte';
 	import PriceTagLine from '$lib/icons/price-tag-line.svelte';
 	import MoneyDollarCircle from '$lib/icons/money-dollar-circle.svelte';
-	
+
 	export let sections: SectionsWithAnswersType;
-	let language: string | null
-	
+	let language: string | null;
+
 	onMount(() => {
 		language = $page.url.searchParams.get('lang');
-	})
+	});
 
 	const icons = [
 		LinksLine,
@@ -31,8 +31,7 @@
 		TeamLine,
 		PriceTagLine,
 		MoneyDollarCircle
-	]
-
+	];
 </script>
 
 <div lang={language === 'kh' ? 'km' : 'en'} id="results-container" class="results-container">
@@ -109,12 +108,12 @@
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		/* grid-template-rows: repeat(3, 1fr); */
-		grid-template-rows: 1fr 1fr .75fr;
+		grid-template-rows: 1fr 1fr 0.75fr;
 
 		grid-template-areas:
 			'a a b b d d e e g g'
 			'a a c c d d f f g g'
-			'h h h h h i i i i i'; 
+			'h h h h h i i i i i';
 		gap: 0;
 	}
 	.section {
@@ -172,7 +171,7 @@
 	.section h2 {
 		font-size: 16px;
 	}
-	[lang="km"] .section h2 {
+	[lang='km'] .section h2 {
 		font-size: 14px;
 	}
 	.section ul {
@@ -180,7 +179,7 @@
 	}
 	@supports (-moz-appearance: none) {
 		/* firefox specific khmer word wrap fix */
-		.results-container[lang="km"] .section ul {
+		.results-container[lang='km'] .section ul {
 			word-break: break-all;
 		}
 	}

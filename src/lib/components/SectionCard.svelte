@@ -1,21 +1,18 @@
 <script lang="ts">
 	import { sectionsStore } from '../../stores';
 	import SectionCardDialog from '$lib/components/SectionCardDialog.svelte';
-	import CheckboxCircleFill from '$lib/icons/checkbox-circle-fill.svelte';
-
-	let completed_questions = [];
 
 	export let language: 'en' | 'kh';
 	export let item_id: number;
 
-	$: item = $sectionsStore.find(section => section.id === item_id)
+	$: item = $sectionsStore.find((section) => section.id === item_id);
 
 	function openDialog() {
 		if (language === 'kh') {
-			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}-kh`)
+			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}-kh`);
 			dialog?.showModal();
 		} else {
-			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}`)
+			const dialog: HTMLDialogElement | null = document.querySelector(`#dialog-${item_id}`);
 			dialog?.showModal();
 		}
 	}
@@ -31,11 +28,6 @@
 					{item?.title_kh}
 				{/if}
 			</h2>
-			{#if completed_questions.length === item?.questions?.length}
-				<span class="icon">
-					<CheckboxCircleFill />
-				</span>
-			{/if}
 		</span>
 		<ul>
 			{#if language === 'en'}

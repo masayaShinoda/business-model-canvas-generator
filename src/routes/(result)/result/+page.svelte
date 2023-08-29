@@ -62,13 +62,22 @@
 
 <ResultCanvas {sections} />
 
+<svelte:head>
+	<title>{language === 'kh' ? 'លទ្ធផល' : 'Results'}</title>
+	<meta name="robots" content="noindex" />
+</svelte:head>
 <div class="btn-section">
 	<div class="btn-wrapper">
 		<button id="btn_download" on:click={download_results} disabled={is_downloading}
 			>{language === 'kh' ? 'ទាញយករូបភាព' : 'Download image'}</button
 		>
-		<button id="btn_back" on:click={go_back}>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+		<button id="btn_back" on:click={go_back} aria-label="Go back">
+			<svg
+				aria-label="Arrow back"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				width="24"
+				height="24"
 				><path
 					d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
 				/></svg
@@ -133,7 +142,7 @@
 		padding: 0.875rem;
 		font-size: 1.125rem;
 		position: fixed;
-		bottom: 3dvh;
+		bottom: 3.5dvh;
 		left: 50%;
 		margin-left: -11rem;
 		cursor: pointer;
@@ -144,6 +153,12 @@
 		background-color: #fff;
 		border: 1px solid rgba(255, 255, 255, 0.25);
 		box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+
+		transition: border-color 200ms ease-out;
+	}
+	.btn-section .btn-wrapper #btn_back:hover,
+	.btn-section .btn-wrapper #btn_back:focus-visible {
+		border-color: #0077cc;
 	}
 	@media screen and (max-width: 48em) {
 		.btn-section .btn-wrapper #btn_back {

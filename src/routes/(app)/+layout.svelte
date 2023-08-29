@@ -39,7 +39,7 @@
 
 		// check localStorage for exiting `user_answers`
 		if (localStorage.getItem(`user_answers`)) {
-			sectionsStore.set(JSON.parse(localStorage.getItem(`user_answers`) ?? ''))
+			sectionsStore.set(JSON.parse(localStorage.getItem(`user_answers`) ?? ''));
 		} else {
 			sectionsStore.set(data.sections);
 		}
