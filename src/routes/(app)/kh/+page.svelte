@@ -28,8 +28,8 @@
 		property="twitter:description"
 		content="កម្មវិធីសម្រាប់បង្កើតផ្ទាំងគំរូអាជីវកម្ម​​ (Business Model Canvas ឬ​សរសេរកាត់ថា BMC)."
 	/>
-	<meta property="og:image" content="https://business-model-canvas.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
-	<meta property="twitter:image" content="https://business-model-canvas.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
+	<meta property="og:image" content="https://bmc.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
+	<meta property="twitter:image" content="https://bmc.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
 </svelte:head>
 <main lang="km">
 	<MainSection language="kh" />

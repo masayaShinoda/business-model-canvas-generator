@@ -23,8 +23,8 @@
 		content="Web tool to generate a Business Model Canvas (BMC) based on user answers."
 	/>
 
-	<meta property="og:image" content="https://business-model-canvas.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
-	<meta property="twitter:image" content="https://business-model-canvas.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
+	<meta property="og:image" content="https://bmc.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
+	<meta property="twitter:image" content="https://bmc.masayashida.com/masaya-business-model-canvas-generator-thumbnail.jpg" />
 </svelte:head>
 <main>
 	<MainSection language="en" />
