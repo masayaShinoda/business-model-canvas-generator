@@ -1,5 +1,5 @@
 <footer>
-	<p class="version">Version 1.0</p>
+	<p class="version">Version: beta 1.1</p>
 	<a href="https://masayashida.com">masayashida.com</a>
 </footer>
 
