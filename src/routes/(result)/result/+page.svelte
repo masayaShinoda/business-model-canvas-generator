@@ -48,7 +48,7 @@
 							is_downloading = false;
 						})
 						.catch((error) => {
-							console.error('An error occured converting DOM node to image', error);
+							console.error('An error occured converting DOM node to image.', error);
 						});
 				}, 250);
 			}
@@ -68,9 +68,6 @@
 </svelte:head>
 <div class="btn-section">
 	<div class="btn-wrapper">
-		<button id="btn_download" on:click={download_results} disabled={is_downloading}
-			>{language === 'kh' ? 'ទាញយករូបភាព' : 'Download image'}</button
-		>
 		<button id="btn_back" on:click={go_back} aria-label="Go back">
 			<svg
 				aria-label="Arrow back"
@@ -83,6 +80,9 @@
 				/></svg
 			>
 		</button>
+		<button id="btn_download" on:click={download_results} disabled={is_downloading}
+			>{language === 'kh' ? 'ទាញយករូបភាព' : 'Download image'}</button
+		>
 	</div>
 </div>
 
