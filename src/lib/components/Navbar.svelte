@@ -22,7 +22,7 @@
 
 	onMount(() => {
 		resetAnswers = () => {
-			console.log('before reset', $sectionsStore);
+			// console.log('before reset', $sectionsStore);
 
 			if (window.confirm('Reset all of your answers?')) {
 				localStorage.setItem('user_answers', '');

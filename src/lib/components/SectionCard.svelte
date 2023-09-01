@@ -114,20 +114,17 @@
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.section-card__top .icon {
-		transform: scale(1.5);
-	}
 	.section-card ul {
 		padding-left: 1rem;
 	}
 	.section-card ul li {
-		color: var(--clr_grey_shade_a);
+		color: var(--clr_grey_shade_b);
 		list-style-image: url('$lib/icons/checkbox-blank-circle.svg');
 		transition-delay: 500ms;
 		transition: 200ms ease-in-out all;
 	}
 	[data-theme='dark'] .section-card ul li {
-		color: var(--clr_grey_shade_d);
+		color: var(--clr_grey_shade_c);
 		list-style-image: url('$lib/icons/checkbox-blank-circle-white.svg');
 	}
 
