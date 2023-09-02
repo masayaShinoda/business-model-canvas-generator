@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { themeStore, sectionsStore } from '../../stores';
+	import { themeStore } from '../../stores';
 	import SunLine from '$lib/icons/sun-line.svelte';
 	import MoonLine from '$lib/icons/moon-line.svelte';
 	import LoopRightLine from '$lib/icons/loop-right-line.svelte';
