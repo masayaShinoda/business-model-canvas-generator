@@ -24,7 +24,7 @@
 		resetAnswers = () => {
 			// console.log('before reset', $sectionsStore);
 
-			if (window.confirm('Reset all of your answers?')) {
+			if (window.confirm(`${language === 'kh' ? "លុបចម្លើយទាំងអស់?" : "Reset all of your answers?"}`)) {
 				localStorage.setItem('user_answers', '');
 
 				window.location.reload();
