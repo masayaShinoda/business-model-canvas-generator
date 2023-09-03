@@ -1,12 +1,19 @@
 <script lang="ts">
-	import { page } from "$app/stores"
-	let language: 'kh' | 'en'
+	import { page } from '$app/stores';
+	let language: 'kh' | 'en';
 	$: language = $page.url.pathname.startsWith('/kh') ? 'kh' : 'en';
 </script>
+
 <footer>
-	<p class="version">Version: beta 1.2</p>
-	<a href="https://www.buymeacoffee.com/masayashida">Buy me a coffee ☕</a>
-	<br>
+	<p class="version">v1.2</p>
+	<a href="https://www.buymeacoffee.com/masayashida">
+		{#if language === 'kh'}
+			ប៉ាវកាហ្វេមួយកែវ ☕
+		{:else}
+			Buy me a coffee ☕
+		{/if}
+	</a>
+	<br />
 	<a href="https://masayashida.com">masayashida.com</a>
 </footer>
 
@@ -20,9 +27,10 @@
 	footer .version {
 		margin: 0;
 		color: var(--clr_grey_shade_b);
+		font-size: 0.875rem;
 	}
-	[data-theme="dark"] footer .version {
-		color: var(--clr_grey_shade_d);
+	[data-theme='dark'] footer .version {
+		color: var(--clr_grey_shade_c);
 	}
 	footer a {
 		text-decoration: none;
