@@ -1,5 +1,5 @@
 <footer>
-	<p class="version">Version: beta 1.1</p>
+	<p class="version">Version: beta 1.2</p>
 	<a href="https://masayashida.com">masayashida.com</a>
 </footer>
 
@@ -11,13 +11,7 @@
 		margin: 2.5rem auto 1.5rem auto;
 		flex: 1;
 	}
-	footer .version {
+	footer > p {
 		margin: 0;
-	}
-	footer a {
-		color: var(--clr_grey_shade_b);
-	}
-	[data-theme="dark"] footer a {
-		color: var(--clr_grey_shade_c);
 	}
 </style>
