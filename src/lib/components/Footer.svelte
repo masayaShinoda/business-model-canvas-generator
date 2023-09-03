@@ -6,6 +6,8 @@
 
 <footer>
 	<p class="version">v1.2</p>
+	<a href="https://pay.ababank.com/D74W8L1gacwSiE2JA">KHQR</a>
+	<span style="font-weight: 600; opacity: 0.5;">&nbsp;·&nbsp;</span>
 	<a href="https://www.buymeacoffee.com/masayashida">
 		{#if language === 'kh'}
 			ប៉ាវកាហ្វេមួយកែវ ☕
@@ -21,7 +23,7 @@
 	footer {
 		max-width: var(--content_max_width);
 		padding: var(--content_padding_horizontal);
-		margin: 2.5rem auto 5rem auto;
+		margin: 2.5rem auto 10dvh auto;
 		flex: 1;
 	}
 	footer .version {
